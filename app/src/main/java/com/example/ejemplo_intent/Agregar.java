@@ -3,6 +3,7 @@ package com.example.ejemplo_intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class Agregar extends AppCompatActivity {
@@ -17,6 +18,10 @@ public class Agregar extends AppCompatActivity {
 
         et1 = findViewById(R.id.etNombre);
         et2 = findViewById(R.id.etUbi);
+    }
+
+    public void agregar(View view) {
+        finish();
     }
 
 

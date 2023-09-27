@@ -13,13 +13,10 @@
         android:theme="@style/Theme.Ejemplo_Intent"
         tools:targetApi="31">
         <activity
+            android:name=".Detail"
+            android:exported="false" />
+        <activity
             android:name=".Dispositivo"
-            android:exported="false" />
-        <activity
-            android:name=".Persona"
-            android:exported="false" />
-        <activity
-            android:name=".dispositivo"
             android:exported="false" />
         <activity
             android:name=".Agregar"
