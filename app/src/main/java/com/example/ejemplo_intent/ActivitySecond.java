@@ -33,6 +33,10 @@ public class ActivitySecond extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 Intent detail = new Intent(ActivitySecond.this, Detail.class);
+                detail.putExtra("nombre", DispositivoController.getListaDispositivo().get(i).getNombreDisp());
+                detail.putExtra("ubi", DispositivoController.getListaDispositivo().get(i).getUbiDisp());
+                detail.putExtra("gas", "3");
+                detail.putExtra("dueño", "Papa Frita");
                 startActivity(detail);
                 /*Toast.makeText(ActivitySecond.this, "Rut:"+
                         DispositivoController.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();*/
