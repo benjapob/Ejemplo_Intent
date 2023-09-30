@@ -18,7 +18,7 @@ public class Detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ImageView imgPersona = findViewById(R.id.imgUsuario);
+        ImageView imgPersona = findViewById(R.id.img);
         imgPersona.setImageResource(R.mipmap.iot);
 
         tvNombre = findViewById(R.id.tvDato1);

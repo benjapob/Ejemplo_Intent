@@ -70,8 +70,8 @@ public class ActivitySecond extends AppCompatActivity {
             TextView txtNombre = item.findViewById(R.id.tvNombre);
             txtNombre.setText(DispositivoController.getListaDispositivo().get(i).getNombreDisp());
 
-            TextView txtUbicacion = item.findViewById(R.id.tvUbi);
-            txtUbicacion.setText(DispositivoController.getListaDispositivo().get(i).getUbiDisp());
+            /*TextView txtUbicacion = item.findViewById(R.id.tvUbi);
+            txtUbicacion.setText(DispositivoController.getListaDispositivo().get(i).getUbiDisp());*/
 
             ImageView imgPersona = item.findViewById(R.id.imgDisp);
             imgPersona.setImageResource(R.mipmap.iot);
