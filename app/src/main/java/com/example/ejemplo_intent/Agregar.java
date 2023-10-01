@@ -20,8 +20,6 @@ public class Agregar extends AppCompatActivity {
 
         et1 = findViewById(R.id.etNombre);
         et2 = findViewById(R.id.etUbi);
-        img = findViewById(R.id.img);
-        img.setImageResource(R.mipmap.tabs);
 
     }
 

@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void pag2(View v){
-        Intent i = new Intent(this, ActivitySecond.class);
+    public void menu(View v){
+        Intent i = new Intent(this, Menu.class);
 
         startActivity(i);
 

@@ -21,7 +21,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:gravity="center|center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/tvDato2"
@@ -30,7 +30,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:gravity="center|center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/tvDato3"
@@ -39,7 +39,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:gravity="center|center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/tvDato4"
@@ -48,7 +48,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:gravity="center|center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/btnAdd"
@@ -66,5 +66,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:onClick="back"
-        android:text="Volver" />
+        android:text="Volver"/>
 </LinearLayout>

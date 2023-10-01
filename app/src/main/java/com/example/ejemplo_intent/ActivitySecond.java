@@ -54,6 +54,9 @@ public class ActivitySecond extends AppCompatActivity {
         Intent i = new Intent(this, Agregar.class);
         startActivity(i);
     }
+    public void back(View view) {
+        finish();
+    }
 
     class AdaptadorDispositivo extends ArrayAdapter<Dispositivo> {
         AppCompatActivity appCompatActivity;

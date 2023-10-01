@@ -39,7 +39,7 @@
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
-        android:onClick="pag2"
+        android:onClick="menu"
         android:text="Iniciar Sesion" />
 
     <TextView
