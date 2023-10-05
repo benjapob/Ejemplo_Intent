@@ -35,8 +35,8 @@ public class ActivitySecond extends AppCompatActivity {
                 Intent detail = new Intent(ActivitySecond.this, Detail.class);
                 detail.putExtra("nombre", DispositivoController.getListaDispositivo().get(i).getNombreDisp());
                 detail.putExtra("ubi", DispositivoController.getListaDispositivo().get(i).getUbiDisp());
-                detail.putExtra("gas", "3");
-                detail.putExtra("dueño", "Papa Frita");
+                detail.putExtra("gas", DispositivoController.getListaDispositivo().get(i).getGas());
+                detail.putExtra("dueño", DispositivoController.getListaDispositivo().get(i).getDueño());
                 startActivity(detail);
                 /*Toast.makeText(ActivitySecond.this, "Rut:"+
                         DispositivoController.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();*/

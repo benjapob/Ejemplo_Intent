@@ -43,15 +43,15 @@ public class Menu extends AppCompatActivity {
     }
 
     public void settings(View view){
-        Intent i = new Intent(this, ActivitySecond.class);
+        /*Intent i = new Intent(this, ActivitySecond.class);
 
-        startActivity(i);
+        startActivity(i);*/
     }
 
     public void info(View view){
-        Intent i = new Intent(this, ActivitySecond.class);
+        /*Intent i = new Intent(this, ActivitySecond.class);
 
-        startActivity(i);
+        startActivity(i);*/
     }
 
     public void back(View view) {

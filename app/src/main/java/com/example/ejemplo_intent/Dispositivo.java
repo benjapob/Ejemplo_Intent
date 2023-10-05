@@ -4,11 +4,31 @@ public class Dispositivo {
     int idDisp;
     String nombreDisp;
     String ubiDisp;
+    String gas;
+    String dueño;
 
-    public Dispositivo(int idDisp, String nombreDisp, String ubiDisp) {
+    public Dispositivo(int idDisp, String nombreDisp, String ubiDisp, String gas, String dueño) {
         this.idDisp = idDisp;
         this.nombreDisp = nombreDisp;
         this.ubiDisp = ubiDisp;
+        this.gas = gas;
+        this.dueño = dueño;
+    }
+
+    public String getGas() {
+        return gas;
+    }
+
+    public void setGas(String gas) {
+        this.gas = gas;
+    }
+
+    public String getDueño() {
+        return dueño;
+    }
+
+    public void setDueño(String dueño) {
+        this.dueño = dueño;
     }
 
     public int getIdDisp() {
