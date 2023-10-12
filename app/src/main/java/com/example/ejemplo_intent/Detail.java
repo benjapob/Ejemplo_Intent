@@ -9,10 +9,9 @@ import android.widget.TextView;
 
 public class Detail extends AppCompatActivity {
 
-    TextView tvNombre;
-    TextView tvUbi;
+    TextView tvFecha;
     TextView tvGas;
-    TextView tvDueño;
+    TextView tvO2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,21 +20,20 @@ public class Detail extends AppCompatActivity {
         ImageView imgPersona = findViewById(R.id.img);
         imgPersona.setImageResource(R.mipmap.iot);
 
-        tvNombre = findViewById(R.id.tvDato1);
-        tvUbi = findViewById(R.id.tvDato2);
-        tvGas = findViewById(R.id.tvDato3);
-        tvDueño = findViewById(R.id.tvDato4);
+        tvFecha = findViewById(R.id.tvDato1);
+        tvGas = findViewById(R.id.tvDato2);
+        tvO2 = findViewById(R.id.tvDato3);
 
         Bundle bundle = getIntent().getExtras();
-        String nom = bundle.getString("nombre");
-        String ubi = bundle.getString("ubi");
+        String fecha = bundle.getString("fecha");
         String gas = bundle.getString("gas");
-        String dueño = bundle.getString("dueño");
-        tvNombre.setText("Nombre: "+nom);
-        tvUbi.setText("Ubicación: "+ubi);
+        String o2 = bundle.getString("o2");
+        tvFecha.setText("Fecha de medición: "+fecha);
         tvGas.setText("Concentración de gas: "+gas);
-        tvDueño.setText("Dueño: "+dueño);
+        tvO2.setText("Concentración de o2: "+o2);
     }
+
+
 
     public void back(View view) {
         finish();

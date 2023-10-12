@@ -15,7 +15,7 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/fechaMed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -21,7 +21,7 @@ public class Menu extends AppCompatActivity {
         imgList.setImageResource(R.mipmap.list);
 
         imgAdd = findViewById(R.id.imgAdd);
-        imgAdd.setImageResource(R.mipmap.add);
+        imgAdd.setImageResource(R.mipmap.arrows);
 
         imgSettings = findViewById(R.id.imgSettings);
         imgSettings.setImageResource(R.mipmap.settings);
@@ -31,7 +31,7 @@ public class Menu extends AppCompatActivity {
     }
 
     public void add(View view){
-        Intent i = new Intent(this, Agregar.class);
+        Intent i = new Intent(this, Robot.class);
 
         startActivity(i);
     }
