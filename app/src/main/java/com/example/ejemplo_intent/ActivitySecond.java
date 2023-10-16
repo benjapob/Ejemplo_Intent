@@ -88,6 +88,7 @@ public class ActivitySecond extends AppCompatActivity {
 
 
         public View getView(int i, View convertView, ViewGroup parent) {
+
             LayoutInflater inflater = appCompatActivity.getLayoutInflater();
             View item = inflater.inflate(R.layout.activity_dispositivo, null);
 

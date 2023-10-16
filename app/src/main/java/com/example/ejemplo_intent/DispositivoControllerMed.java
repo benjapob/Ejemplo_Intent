@@ -13,7 +13,7 @@ public class DispositivoControllerMed {
     }
 
     public static void removeDispositivoMed(int id) {
-        listaDispositivoMed.remove(id);
+        findDispositivoMed(id).setActivo(false);
     }
 
     public static DispositivoMed findDispositivoMed(int id) {
@@ -26,14 +26,21 @@ public class DispositivoControllerMed {
     }
 
     public static ArrayList<DispositivoMed> getListaDispositivoMed() {
-        return listaDispositivoMed;
+        ArrayList<DispositivoMed> listaMedicionesActive = new ArrayList<>();
+        for (DispositivoMed d: listaDispositivoMed) {
+            if (d.isActivo()){
+                listaMedicionesActive.add(d);
+            }
+
+        }
+        return listaMedicionesActive;
     }
 
     public static void cargarLista() {
         /*if (listaDispositivoMed.size() == 0) {
-            addDispositivoMed( "50 (Media)", "20 (Baja)");
-            addDispositivoMed( "80 (Alta)", "20 (Baja)");
-            addDispositivoMed( "10 (Baja)", "50 (Media)");
+            addDispositivoMed( "50 (Media)", "20 (Baja)", "66");
+            addDispositivoMed( "80 (Alta)", "20 (Baja)", "77");
+            addDispositivoMed( "10 (Baja)", "50 (Media)", "77");
         }*/
     }
 }

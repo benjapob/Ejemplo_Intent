@@ -12,12 +12,14 @@ public class DispositivoMed implements Serializable {
     private String o2Conc;
     private String fechaMedicion;
     private String ubicacion;
+    private boolean activo;
 
     public DispositivoMed(int idMed, String gasConc, String o2Conc, String ubicacion) {
         this.idMed = idMed;
         this.gasConc = gasConc;
         this.o2Conc = o2Conc;
         this.ubicacion = ubicacion;
+        this.activo = true;
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String fecha = df.format(c);
@@ -64,5 +66,13 @@ public class DispositivoMed implements Serializable {
 
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }
