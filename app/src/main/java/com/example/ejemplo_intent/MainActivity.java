@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Email o contraseña incorrecto", Toast.LENGTH_SHORT).show();
             }
         }
-
-
+    }
+    public void register(View v){
+        Intent i = new Intent(this, Registrar.class);
+        startActivity(i);
     }
 }

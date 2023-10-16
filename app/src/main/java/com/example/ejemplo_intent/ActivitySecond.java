@@ -41,6 +41,7 @@ public class ActivitySecond extends AppCompatActivity {
         /*Intent intent = getIntent();
         controllerMed = (DispositivoControllerMed)intent.getSerializableExtra("controllerMed");*/
 
+
         //Generar función click
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,11 +53,11 @@ public class ActivitySecond extends AppCompatActivity {
                 detail.putExtras(bundleDetail);
 
                 startActivity(detail);
-                /*Toast.makeText(ActivitySecond.this, "Rut:"+
-                        DispositivoControllerMed.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();
-                        detail.putExtra("fecha", DispositivoControllerMed.getListaDispositivoMed().get(i).getFechaMedicion().toString());
-                        detail.putExtra("o2", DispositivoControllerMed.getListaDispositivoMed().get(i).getO2Conc());
-                        detail.putExtra("gas", DispositivoControllerMed.getListaDispositivoMed().get(i).getGasConc());*/
+            /*Toast.makeText(ActivitySecond.this, "Rut:"+
+                    DispositivoControllerMed.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();
+                    detail.putExtra("fecha", DispositivoControllerMed.getListaDispositivoMed().get(i).getFechaMedicion().toString());
+                    detail.putExtra("o2", DispositivoControllerMed.getListaDispositivoMed().get(i).getO2Conc());
+                    detail.putExtra("gas", DispositivoControllerMed.getListaDispositivoMed().get(i).getGasConc());*/
             }
         });
 

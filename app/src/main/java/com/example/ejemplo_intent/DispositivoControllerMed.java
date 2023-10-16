@@ -7,8 +7,8 @@ import java.util.Random;
 public class DispositivoControllerMed {
     private static ArrayList<DispositivoMed> listaDispositivoMed = new ArrayList<>();
 
-    public static void addDispositivoMed(String gasConc, String o2Conc) {
-        DispositivoMed d = new DispositivoMed(listaDispositivoMed.size()+1, gasConc, o2Conc);
+    public static void addDispositivoMed(String gasConc, String o2Conc, String ubicacion) {
+        DispositivoMed d = new DispositivoMed(listaDispositivoMed.size()+1, gasConc, o2Conc, ubicacion);
         listaDispositivoMed.add(d);
     }
 

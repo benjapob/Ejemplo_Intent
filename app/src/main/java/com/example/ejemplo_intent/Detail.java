@@ -14,6 +14,7 @@ public class Detail extends AppCompatActivity {
     TextView tvFecha;
     TextView tvGas;
     TextView tvO2;
+    TextView tvUbi;
     DispositivoMed medicion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class Detail extends AppCompatActivity {
         tvFecha = findViewById(R.id.tvDato1);
         tvGas = findViewById(R.id.tvDato2);
         tvO2 = findViewById(R.id.tvDato3);
+        tvUbi = findViewById(R.id.tvDato4);
 
 
 
@@ -35,6 +37,7 @@ public class Detail extends AppCompatActivity {
         tvFecha.setText("Fecha de medición: "+medicion.getFechaMedicion());
         tvGas.setText("Concentración de gas: "+medicion.getGasConc());
         tvO2.setText("Concentración de o2: "+medicion.getO2Conc());
+        tvUbi.setText("Ubicación: "+medicion.getUbicacion());
     }
 
 

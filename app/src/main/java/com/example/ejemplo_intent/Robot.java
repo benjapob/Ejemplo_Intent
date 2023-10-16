@@ -11,15 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.Random;
 
 public class Robot extends AppCompatActivity {
 
     TextView gas;
     TextView o2;
+    TextView ubicacion;
     String gasMedida = "";
-
     String o2Medida = "";
+    String ubicacionMed = "";
     DispositivoControllerMed controllerMed;
 
     @Override
@@ -28,6 +31,7 @@ public class Robot extends AppCompatActivity {
         setContentView(R.layout.activity_agregar);
         gas = findViewById(R.id.medida1);
         o2 = findViewById(R.id.medida2);
+        ubicacion = findViewById(R.id.medida3);
 
         Intent intent = getIntent();
         controllerMed = (DispositivoControllerMed)intent.getSerializableExtra("controllerMed");
@@ -57,11 +61,12 @@ public class Robot extends AppCompatActivity {
 
         o2.setText("Concentración de gas: " + gasMedida );
         gas.setText("Concentración de o2: " + o2Medida);
-
+        ubicacionMed = "77º 23º";
+        ubicacion.setText("Ubicación: "+ubicacionMed);
     }
 
     public void agregar(View view) {
-        controllerMed.addDispositivoMed(gasMedida, o2Medida);
+        controllerMed.addDispositivoMed(gasMedida, o2Medida, ubicacionMed);
         Toast.makeText(this, "Agregado al historial", Toast.LENGTH_SHORT).show();
     }
     public void volver(View view) {

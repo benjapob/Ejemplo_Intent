@@ -8,8 +8,8 @@ import java.util.Random;
 public class EmpresaController {
     private static ArrayList<Empresa> listaEmpresa = new ArrayList<>();
 
-    public static void addEmpresa(int id, String nombre, String rut, String contraseña, String email, String telefono) {
-        Empresa e = new Empresa(id, nombre, rut, contraseña, email, telefono);
+    public static void addEmpresa(String nombre, String rut, String contraseña, String email, String telefono) {
+        Empresa e = new Empresa(listaEmpresa.size()+1, nombre, rut, contraseña, email, telefono);
         listaEmpresa.add(e);
     }
 
@@ -38,7 +38,7 @@ public class EmpresaController {
     public static void cargarLista() {
 
         if (listaEmpresa.size() == 0) {
-            addEmpresa(1,"emp1","1-1","admin","correo@correo.com","123");
+            addEmpresa("emp1","1-1","admin","correo@correo.com","123");
         }
     }
 }
