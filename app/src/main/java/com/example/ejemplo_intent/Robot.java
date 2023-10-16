@@ -2,6 +2,7 @@ package com.example.ejemplo_intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -16,10 +17,10 @@ public class Robot extends AppCompatActivity {
 
     TextView gas;
     TextView o2;
-    ImageView up;
-    ImageView down;
-    ImageView left;
-    ImageView right;
+    String gasMedida = "";
+
+    String o2Medida = "";
+    DispositivoControllerMed controllerMed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,21 +28,14 @@ public class Robot extends AppCompatActivity {
         setContentView(R.layout.activity_agregar);
         gas = findViewById(R.id.medida1);
         o2 = findViewById(R.id.medida2);
-        up = findViewById(R.id.up);
-        down = findViewById(R.id.down);
-        left = findViewById(R.id.left);
-        right = findViewById(R.id.right);
 
-        up.setImageResource(R.mipmap.up);
-        down.setImageResource(R.mipmap.down);
-        left.setImageResource(R.mipmap.left);
-        right.setImageResource(R.mipmap.right);
+        Intent intent = getIntent();
+        controllerMed = (DispositivoControllerMed)intent.getSerializableExtra("controllerMed");
 
         Random r = new Random();
         Integer gasNum = r.nextInt(100); //Vendrá desde el sensor
-        String gasMedida = "";
+
         Integer o2Num = r.nextInt(100); //Vendrá desde el sensor
-        String o2Medida = "";
 
         if (gasNum > 80){
             gasMedida = gasNum.toString() + " (Alta)";
@@ -67,6 +61,7 @@ public class Robot extends AppCompatActivity {
     }
 
     public void agregar(View view) {
+        controllerMed.addDispositivoMed(gasMedida, o2Medida);
         Toast.makeText(this, "Agregado al historial", Toast.LENGTH_SHORT).show();
     }
     public void volver(View view) {

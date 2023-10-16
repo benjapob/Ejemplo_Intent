@@ -12,32 +12,51 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class ActivitySecond extends AppCompatActivity {
 
     TextView tvMsj2;
     public ListView listView;
+    DispositivoControllerMed controllerMed;
+    DispositivoMed medicion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        // al resumir la ventana
         DispositivoControllerMed.cargarLista();
         AdaptadorDispositivo adapter = new AdaptadorDispositivo(this);
         listView = findViewById(R.id.listaDispositivos);
         listView.setAdapter(adapter);
+
+        /*Intent intent = getIntent();
+        controllerMed = (DispositivoControllerMed)intent.getSerializableExtra("controllerMed");*/
 
         //Generar función click
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 Intent detail = new Intent(ActivitySecond.this, Detail.class);
-                detail.putExtra("fecha", DispositivoControllerMed.getListaDispositivoMed().get(i).getFechaMedicion().toString());
-                detail.putExtra("o2", DispositivoControllerMed.getListaDispositivoMed().get(i).getO2Conc());
-                detail.putExtra("gas", DispositivoControllerMed.getListaDispositivoMed().get(i).getGasConc());
+                medicion = DispositivoControllerMed.getListaDispositivoMed().get(i);
+                Bundle bundleDetail = new Bundle();
+                bundleDetail.putSerializable("medicion", medicion);
+                detail.putExtras(bundleDetail);
+
                 startActivity(detail);
                 /*Toast.makeText(ActivitySecond.this, "Rut:"+
-                        DispositivoControllerMed.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();*/
+                        DispositivoControllerMed.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();
+                        detail.putExtra("fecha", DispositivoControllerMed.getListaDispositivoMed().get(i).getFechaMedicion().toString());
+                        detail.putExtra("o2", DispositivoControllerMed.getListaDispositivoMed().get(i).getO2Conc());
+                        detail.putExtra("gas", DispositivoControllerMed.getListaDispositivoMed().get(i).getGasConc());*/
             }
         });
 
@@ -50,6 +69,9 @@ public class ActivitySecond extends AppCompatActivity {
 
     public void add(View view) {
         Intent i = new Intent(this, Robot.class);
+        /*Bundle bundle = new Bundle();
+        bundle.putSerializable("controllerMed", controllerMed);
+        i.putExtras(bundle);*/
         startActivity(i);
     }
     public void back(View view) {

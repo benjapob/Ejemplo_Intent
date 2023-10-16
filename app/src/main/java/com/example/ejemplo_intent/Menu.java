@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 public class Menu extends AppCompatActivity {
     ImageView imgList;
     ImageView imgAdd;
     ImageView imgSettings;
     ImageView imgInfo;
+    DispositivoControllerMed controllerMed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,16 +31,25 @@ public class Menu extends AppCompatActivity {
 
         imgInfo = findViewById(R.id.imgInfo);
         imgInfo.setImageResource(R.mipmap.info);
+
+        /*Intent intent = getIntent();
+        controllerMed = (DispositivoControllerMed)intent.getSerializableExtra("controllerMed");*/
     }
 
     public void add(View view){
         Intent i = new Intent(this, Robot.class);
+        /*Bundle bundle = new Bundle();
+        bundle.putSerializable("controllerMed", controllerMed);
+        i.putExtras(bundle);*/
 
         startActivity(i);
     }
 
     public void list(View view){
         Intent i = new Intent(this, ActivitySecond.class);
+        /*Bundle bundle = new Bundle();
+        bundle.putSerializable("controllerMed", controllerMed);
+        i.putExtras(bundle);*/
 
         startActivity(i);
     }

@@ -21,54 +21,6 @@
             android:layout_weight="1"
             android:background="#3D42A5" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:contentDescription="up"
-                android:src="@android:drawable/btn_star" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:contentDescription="left"
-                    android:src="@android:drawable/btn_star" />
-
-                <ImageButton
-                    android:id="@+id/right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:contentDescription="right"
-                    android:src="@android:drawable/btn_star" />
-
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/down"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:contentDescription="down"
-                android:src="@android:drawable/btn_star" />
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -95,7 +47,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/medida1"
+                android:id="@+id/medida2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -103,12 +55,13 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/medida2"
+                android:id="@+id/medida1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
         </LinearLayout>
     </LinearLayout>
 

@@ -1,15 +1,28 @@
 package com.example.ejemplo_intent;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class DispositivoMed {
-    int idMed;
-    String gasConc;
-    String o2Conc;
-    String fechaMedicion;
+public class DispositivoMed implements Serializable {
+    private int idMed;
+    private String gasConc;
+    private String o2Conc;
+    private String fechaMedicion;
+
+    public DispositivoMed(int idMed, String gasConc, String o2Conc) {
+        this.idMed = idMed;
+        this.gasConc = gasConc;
+        this.o2Conc = o2Conc;
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String fecha = df.format(c);
+        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        String hora = df2.format(c);
+        this.fechaMedicion =  fecha + " " + hora;
+    }
 
     public int getIdMed() {
         return idMed;
@@ -41,18 +54,6 @@ public class DispositivoMed {
 
     public void setFechaMedicion(String fechaMedicion) {
         this.fechaMedicion = fechaMedicion;
-    }
-
-    public DispositivoMed(int idMed, String gasConc, String o2Conc) {
-        this.idMed = idMed;
-        this.gasConc = gasConc;
-        this.o2Conc = o2Conc;
-        Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        String fecha = df.format(c);
-        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-        String hora = df2.format(c);
-        this.fechaMedicion =  fecha + " " + hora;
     }
 
 }
