@@ -3,19 +3,17 @@ package com.example.ejemplo_intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Random;
 
-public class Robot extends AppCompatActivity {
+public class Agregar extends AppCompatActivity {
 
     TextView gas;
     TextView o2;
@@ -23,7 +21,7 @@ public class Robot extends AppCompatActivity {
     String gasMedida = "";
     String o2Medida = "";
     String ubicacionMed = "";
-    DispositivoControllerMed controllerMed;
+    Integer idEmpresa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +32,7 @@ public class Robot extends AppCompatActivity {
         ubicacion = findViewById(R.id.medida3);
 
         Intent intent = getIntent();
-        controllerMed = (DispositivoControllerMed)intent.getSerializableExtra("controllerMed");
+        idEmpresa = intent.getIntExtra("id", 0);
 
         Random r = new Random();
         Integer gasNum = r.nextInt(100); //Vendrá desde el sensor
@@ -43,31 +41,45 @@ public class Robot extends AppCompatActivity {
 
         if (gasNum > 80){
             gasMedida = gasNum.toString() + " (Alta)";
+            gas.setBackgroundColor(Color.RED);
         } else if (gasNum > 40) {
             gasMedida = gasNum.toString() + " (Media)";
+            gas.setBackgroundColor(Color.YELLOW);
         }
         else {
             gasMedida = gasNum.toString() + " (Baja)";
+            gas.setBackgroundColor(Color.GREEN);
         }
 
         if (o2Num > 80){
             o2Medida = o2Num.toString() + " (Alta)";
+            o2.setBackgroundColor(Color.RED);
         } else if (o2Num > 40) {
             o2Medida = o2Num.toString() + " (Media)";
+            o2.setBackgroundColor(Color.YELLOW);
         }
         else {
             o2Medida = o2Num.toString() + " (Baja)";
+            o2.setBackgroundColor(Color.GREEN);
         }
 
-        o2.setText("Concentración de gas: " + gasMedida );
-        gas.setText("Concentración de o2: " + o2Medida);
+        gas.setText("Gas: " + gasMedida );
+        o2.setText("O2: " + o2Medida);
+
         ubicacionMed = "77º 23º";
         ubicacion.setText("Ubicación: "+ubicacionMed);
     }
 
     public void agregar(View view) {
-        controllerMed.addDispositivoMed(gasMedida, o2Medida, ubicacionMed);
-        Toast.makeText(this, "Agregado al historial", Toast.LENGTH_SHORT).show();
+        MedicionController.addDispositivoMed(gasMedida, o2Medida, ubicacionMed);
+        Snackbar.make(gas,"Medicion agregada",Snackbar.LENGTH_SHORT)
+                .setAction("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //Your code
+                    }
+                })
+                .show();
     }
     public void volver(View view) {
         finish();

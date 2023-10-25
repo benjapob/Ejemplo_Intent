@@ -6,15 +6,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class DispositivoMed implements Serializable {
+public class Medicion implements Serializable {
     private int idMed;
     private String gasConc;
     private String o2Conc;
     private String fechaMedicion;
     private String ubicacion;
+    private Dispositivo dispositivo;
     private boolean activo;
 
-    public DispositivoMed(int idMed, String gasConc, String o2Conc, String ubicacion) {
+    public Medicion(int idMed, String gasConc, String o2Conc, String ubicacion) {
         this.idMed = idMed;
         this.gasConc = gasConc;
         this.o2Conc = o2Conc;
@@ -26,6 +27,7 @@ public class DispositivoMed implements Serializable {
         SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
         String hora = df2.format(c);
         this.fechaMedicion =  fecha + " " + hora;
+        //this.dispositivo = dispositivo;
     }
 
     public int getIdMed() {
@@ -74,5 +76,13 @@ public class DispositivoMed implements Serializable {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public Dispositivo getDispositivo() {
+        return dispositivo;
+    }
+
+    public void setDispositivo(Dispositivo dispositivo) {
+        this.dispositivo = dispositivo;
     }
 }

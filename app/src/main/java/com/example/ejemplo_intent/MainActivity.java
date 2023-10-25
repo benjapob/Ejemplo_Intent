@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 
 
@@ -37,19 +39,34 @@ public class MainActivity extends AppCompatActivity {
         String emailInput = email.getText().toString();
         String pwdInput = contraseña.getText().toString();
         if (emailInput.isEmpty() || pwdInput.isEmpty()){
-            Toast.makeText(this, "Por favor, rellena los campos", Toast.LENGTH_SHORT).show();
+                Snackbar.make(email,"Por favor, rellena los campos",Snackbar.LENGTH_SHORT)
+                        .setAction("Ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //Your code
+                            }
+                        })
+                        .show();
         }
         else {
-            DispositivoControllerMed controllerMed = EmpresaController.login(emailInput, pwdInput);
-            if (controllerMed != null){
+            Integer idEmpresa = EmpresaController.login(emailInput, pwdInput);
+            if (idEmpresa != null){
                 Intent i = new Intent(this, Menu.class);
+                i.putExtra("id", idEmpresa);
                 /*Bundle bundle = new Bundle();
                 bundle.putSerializable("controllerMed", controllerMed);
                 i.putExtras(bundle);*/
                 startActivity(i);
             }
             else {
-                Toast.makeText(this, "Email o contraseña incorrecto", Toast.LENGTH_SHORT).show();
+                Snackbar.make(email,"Email o contraseña incorrectos",Snackbar.LENGTH_SHORT)
+                        .setAction("Ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //Your code
+                            }
+                        })
+                        .show();
             }
         }
     }

@@ -19,16 +19,16 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".Detail"
+            android:name=".DetailMedicion"
             android:exported="false" />
         <activity
-            android:name=".DispositivoMed"
+            android:name=".Medicion"
             android:exported="false" />
         <activity
-            android:name=".Robot"
+            android:name=".Agregar"
             android:exported="false" />
         <activity
-            android:name=".ActivitySecond"
+            android:name=".Listado"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

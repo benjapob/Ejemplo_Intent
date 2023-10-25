@@ -1,6 +1,7 @@
 package com.example.ejemplo_intent;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Empresa {
     private Integer idEmpresa;
@@ -9,7 +10,7 @@ public class Empresa {
     private String contraseña;
     private String email;
     private String telefono;
-    private DispositivoControllerMed listaMed;
+    private Dispositivo dispositivo;
 
     public Empresa(Integer idEmpresa, String nombreEmpresa, String rutEmpresa, String contraseña, String email, String telefono) {
         this.idEmpresa = idEmpresa;
@@ -18,7 +19,9 @@ public class Empresa {
         this.contraseña = contraseña;
         this.email = email;
         this.telefono = telefono;
-        this.listaMed = new DispositivoControllerMed();
+        Random r = new Random();
+        this.dispositivo = new Dispositivo(idEmpresa, "Dispositivo"+idEmpresa.toString(), r.nextFloat(), r.nextFloat(), r.nextFloat(), r.nextFloat());
+        DispositivoController.addDispositivo(this.dispositivo);
     }
 
     public Integer getIdEmpresa() {
@@ -69,11 +72,7 @@ public class Empresa {
         this.telefono = telefono;
     }
 
-    public DispositivoControllerMed getListaMed() {
-        return listaMed;
-    }
-
-    public void setListaMed(DispositivoControllerMed listaMed) {
-        this.listaMed = listaMed;
+    public Dispositivo getDispositivo() {
+        return dispositivo;
     }
 }

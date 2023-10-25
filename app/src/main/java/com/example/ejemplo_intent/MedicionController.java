@@ -1,14 +1,12 @@
 package com.example.ejemplo_intent;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Random;
 
-public class DispositivoControllerMed {
-    private static ArrayList<DispositivoMed> listaDispositivoMed = new ArrayList<>();
+public class MedicionController {
+    private static ArrayList<Medicion> listaDispositivoMed = new ArrayList<>();
 
     public static void addDispositivoMed(String gasConc, String o2Conc, String ubicacion) {
-        DispositivoMed d = new DispositivoMed(listaDispositivoMed.size()+1, gasConc, o2Conc, ubicacion);
+        Medicion d = new Medicion(listaDispositivoMed.size()+1, gasConc, o2Conc, ubicacion);
         listaDispositivoMed.add(d);
     }
 
@@ -16,8 +14,8 @@ public class DispositivoControllerMed {
         findDispositivoMed(id).setActivo(false);
     }
 
-    public static DispositivoMed findDispositivoMed(int id) {
-        for (DispositivoMed d : listaDispositivoMed) {
+    public static Medicion findDispositivoMed(int id) {
+        for (Medicion d : listaDispositivoMed) {
             if (id == d.getIdMed()){
                 return d;
             }
@@ -25,9 +23,9 @@ public class DispositivoControllerMed {
         return null;
     }
 
-    public static ArrayList<DispositivoMed> getListaDispositivoMed() {
-        ArrayList<DispositivoMed> listaMedicionesActive = new ArrayList<>();
-        for (DispositivoMed d: listaDispositivoMed) {
+    public static ArrayList<Medicion> getListaDispositivoMed() {
+        ArrayList<Medicion> listaMedicionesActive = new ArrayList<>();
+        for (Medicion d: listaDispositivoMed) {
             if (d.isActivo()){
                 listaMedicionesActive.add(d);
             }
@@ -36,11 +34,13 @@ public class DispositivoControllerMed {
         return listaMedicionesActive;
     }
 
-    public static void cargarLista() {
+    public static ArrayList<Medicion> cargarLista(int idDispositivo) {
         /*if (listaDispositivoMed.size() == 0) {
             addDispositivoMed( "50 (Media)", "20 (Baja)", "66");
             addDispositivoMed( "80 (Alta)", "20 (Baja)", "77");
             addDispositivoMed( "10 (Baja)", "50 (Media)", "77");
         }*/
+        ArrayList<Medicion> listaMediciones = new ArrayList<>();
+        return listaMediciones;
     }
 }

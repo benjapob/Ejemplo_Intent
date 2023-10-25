@@ -22,10 +22,10 @@ public class EmpresaController {
         return null;
     }
 
-    public static DispositivoControllerMed login(String email, String contraseña) {
+    public static Integer login(String email, String contraseña) {
         for (Empresa e : listaEmpresa){
             if (email.equals(e.getEmail()) && contraseña.equals(e.getContraseña()) ){
-                return e.getListaMed();
+                return e.getIdEmpresa();
             }
         }
         return null;

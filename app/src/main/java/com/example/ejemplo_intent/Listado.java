@@ -12,16 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
-public class ActivitySecond extends AppCompatActivity {
+public class Listado extends AppCompatActivity {
 
     TextView tvMsj2;
     public ListView listView;
-    DispositivoControllerMed controllerMed;
-    DispositivoMed medicion;
+    MedicionController controllerMed;
+    Medicion medicion;
+    Integer idEmpresa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,31 +31,31 @@ public class ActivitySecond extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         // al resumir la ventana
-        DispositivoControllerMed.cargarLista();
         AdaptadorDispositivo adapter = new AdaptadorDispositivo(this);
         listView = findViewById(R.id.listaDispositivos);
         listView.setAdapter(adapter);
 
-        /*Intent intent = getIntent();
-        controllerMed = (DispositivoControllerMed)intent.getSerializableExtra("controllerMed");*/
+        Intent intent = getIntent();
+        idEmpresa = intent.getIntExtra("id", 0);
+        /*controllerMed = (MedicionController)intent.getSerializableExtra("controllerMed");*/
 
 
         //Generar función click
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-                Intent detail = new Intent(ActivitySecond.this, Detail.class);
-                medicion = DispositivoControllerMed.getListaDispositivoMed().get(i);
+                Intent detail = new Intent(Listado.this, DetailMedicion.class);
+                medicion = MedicionController.getListaDispositivoMed().get(i);
                 Bundle bundleDetail = new Bundle();
                 bundleDetail.putSerializable("medicion", medicion);
                 detail.putExtras(bundleDetail);
 
                 startActivity(detail);
-            /*Toast.makeText(ActivitySecond.this, "Rut:"+
-                    DispositivoControllerMed.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();
-                    detail.putExtra("fecha", DispositivoControllerMed.getListaDispositivoMed().get(i).getFechaMedicion().toString());
-                    detail.putExtra("o2", DispositivoControllerMed.getListaDispositivoMed().get(i).getO2Conc());
-                    detail.putExtra("gas", DispositivoControllerMed.getListaDispositivoMed().get(i).getGasConc());*/
+            /*Toast.makeText(Listado.this, "Rut:"+
+                    MedicionController.getListaDispositivo().get(i).getIdDisp(), Toast.LENGTH_SHORT).show();
+                    detail.putExtra("fecha", MedicionController.getListaDispositivoMed().get(i).getFechaMedicion().toString());
+                    detail.putExtra("o2", MedicionController.getListaDispositivoMed().get(i).getO2Conc());
+                    detail.putExtra("gas", MedicionController.getListaDispositivoMed().get(i).getGasConc());*/
             }
         });
 
@@ -69,7 +67,8 @@ public class ActivitySecond extends AppCompatActivity {
     }
 
     public void add(View view) {
-        Intent i = new Intent(this, Robot.class);
+        Intent i = new Intent(this, Agregar.class);
+        i.putExtra("id", idEmpresa);
         /*Bundle bundle = new Bundle();
         bundle.putSerializable("controllerMed", controllerMed);
         i.putExtras(bundle);*/
@@ -79,10 +78,10 @@ public class ActivitySecond extends AppCompatActivity {
         finish();
     }
 
-    class AdaptadorDispositivo extends ArrayAdapter<DispositivoMed> {
+    class AdaptadorDispositivo extends ArrayAdapter<Medicion> {
         AppCompatActivity appCompatActivity;
         public AdaptadorDispositivo(AppCompatActivity context) {
-            super(context, R.layout.activity_dispositivo, DispositivoControllerMed.getListaDispositivoMed());
+            super(context, R.layout.activity_dispositivo, MedicionController.getListaDispositivoMed());
             appCompatActivity = context;
         }
 
@@ -93,10 +92,10 @@ public class ActivitySecond extends AppCompatActivity {
             View item = inflater.inflate(R.layout.activity_dispositivo, null);
 
             TextView txtNombre = item.findViewById(R.id.fechaMed);
-            txtNombre.setText(DispositivoControllerMed.getListaDispositivoMed().get(i).getFechaMedicion().toString());
+            txtNombre.setText(MedicionController.getListaDispositivoMed().get(i).getFechaMedicion().toString());
 
             /*TextView txtUbicacion = item.findViewById(R.id.tvUbi);
-            txtUbicacion.setText(DispositivoControllerMed.getListaDispositivo().get(i).getUbiDisp());*/
+            txtUbicacion.setText(MedicionController.getListaDispositivo().get(i).getUbiDisp());*/
 
             ImageView imgPersona = item.findViewById(R.id.imgDisp);
             imgPersona.setImageResource(R.mipmap.iot);
