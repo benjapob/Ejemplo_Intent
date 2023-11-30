@@ -42,7 +42,7 @@ public class DetailMedicion extends AppCompatActivity {
         tvFecha.setText("Fecha de medición: "+medicion.getFechaMedicion());
         tvGas.setText("Concentración de gas: "+medicion.getGasConc());
         tvO2.setText("Concentración de o2: "+medicion.getO2Conc());
-        tvUbi.setText("Ubicación: "+medicion.getUbicacion());
+        tvUbi.setText("Ubicación: "+"123");
     }
 
 

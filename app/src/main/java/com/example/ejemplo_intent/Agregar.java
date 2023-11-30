@@ -10,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Random;
 
@@ -22,11 +25,17 @@ public class Agregar extends AppCompatActivity {
     String o2Medida = "";
     String ubicacionMed = "";
     Integer idEmpresa;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
+
+        iniciarFireBase();
+
         gas = findViewById(R.id.medida1);
         o2 = findViewById(R.id.medida2);
         ubicacion = findViewById(R.id.medida3);
@@ -70,8 +79,17 @@ public class Agregar extends AppCompatActivity {
         ubicacion.setText("Ubicación: "+ubicacionMed);
     }
 
+    private void iniciarFireBase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
     public void agregar(View view) {
-        MedicionController.addDispositivoMed(gasMedida, o2Medida, ubicacionMed);
+        Medicion m = MedicionController.addDispositivoMed(gasMedida, o2Medida, ubicacionMed);
+        if (m != null){
+            databaseReference.child("Medicion").child(String.valueOf(m.getIdMed())).setValue(m);
+        }
         Snackbar.make(gas,"Medicion agregada",Snackbar.LENGTH_SHORT)
                 .setAction("Ok", new View.OnClickListener() {
                     @Override

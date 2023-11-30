@@ -8,10 +8,10 @@ import java.util.Locale;
 
 public class Medicion implements Serializable {
     private int idMed;
+    //usar la clase dispositivo en vez de atributos
     private String gasConc;
     private String o2Conc;
     private String fechaMedicion;
-    private String ubicacion;
     private Dispositivo dispositivo;
     private boolean activo;
 
@@ -19,7 +19,6 @@ public class Medicion implements Serializable {
         this.idMed = idMed;
         this.gasConc = gasConc;
         this.o2Conc = o2Conc;
-        this.ubicacion = ubicacion;
         this.activo = true;
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -60,14 +59,6 @@ public class Medicion implements Serializable {
 
     public void setFechaMedicion(String fechaMedicion) {
         this.fechaMedicion = fechaMedicion;
-    }
-
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
     }
 
     public boolean isActivo() {

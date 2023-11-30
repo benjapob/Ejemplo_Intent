@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "869386359436",
+    "firebase_url": "https://senmin-cb7cc-default-rtdb.firebaseio.com",
+    "project_id": "senmin-cb7cc",
+    "storage_bucket": "senmin-cb7cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869386359436:android:9e4bc0845987324d9ba1a9",
+        "android_client_info": {
+          "package_name": "com.example.ejemplo_intent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8Tga0DK0DWBxjOp5JZ1xCQL1CDFhA9LU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

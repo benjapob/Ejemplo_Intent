@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class MedicionController {
     private static ArrayList<Medicion> listaDispositivoMed = new ArrayList<>();
 
-    public static void addDispositivoMed(String gasConc, String o2Conc, String ubicacion) {
+    public static Medicion addDispositivoMed(String gasConc, String o2Conc, String ubicacion) {
         Medicion d = new Medicion(listaDispositivoMed.size()+1, gasConc, o2Conc, ubicacion);
         listaDispositivoMed.add(d);
+        return d;
     }
 
     public static void removeDispositivoMed(int id) {

@@ -10,7 +10,6 @@ public class Empresa {
     private String contraseña;
     private String email;
     private String telefono;
-    private Dispositivo dispositivo;
 
     public Empresa(Integer idEmpresa, String nombreEmpresa, String rutEmpresa, String contraseña, String email, String telefono) {
         this.idEmpresa = idEmpresa;
@@ -20,8 +19,8 @@ public class Empresa {
         this.email = email;
         this.telefono = telefono;
         Random r = new Random();
-        this.dispositivo = new Dispositivo(idEmpresa, "Dispositivo"+idEmpresa.toString(), r.nextFloat(), r.nextFloat(), r.nextFloat(), r.nextFloat());
-        DispositivoController.addDispositivo(this.dispositivo);
+        /*this.dispositivo = new Dispositivo(idEmpresa, "Dispositivo"+idEmpresa.toString(), r.nextFloat(), r.nextFloat(), r.nextFloat(), r.nextFloat());
+        DispositivoController.addDispositivo(this.dispositivo);*/
     }
 
     public Integer getIdEmpresa() {
@@ -70,9 +69,5 @@ public class Empresa {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public Dispositivo getDispositivo() {
-        return dispositivo;
     }
 }
