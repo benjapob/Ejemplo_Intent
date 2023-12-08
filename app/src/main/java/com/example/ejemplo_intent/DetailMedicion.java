@@ -17,7 +17,8 @@ public class DetailMedicion extends AppCompatActivity {
 
     TextView tvFecha;
     TextView tvGas;
-    TextView tvO2;
+    TextView tvAcido;
+    TextView tvAzufre;
     TextView tvUbi;
     Medicion medicion;
     @Override
@@ -30,8 +31,9 @@ public class DetailMedicion extends AppCompatActivity {
 
         tvFecha = findViewById(R.id.tvDato1);
         tvGas = findViewById(R.id.tvDato2);
-        tvO2 = findViewById(R.id.tvDato3);
-        tvUbi = findViewById(R.id.tvDato4);
+        tvAcido = findViewById(R.id.tvDato3);
+        tvAzufre = findViewById(R.id.tvDato4);
+        tvUbi = findViewById(R.id.tvDato5);
 
 
 
@@ -40,9 +42,10 @@ public class DetailMedicion extends AppCompatActivity {
         medicion = (Medicion)intent.getSerializableExtra("medicion");
 
         tvFecha.setText("Fecha de medición: "+medicion.getFechaMedicion());
-        /*tvGas.setText("Concentración de gas: "+medicion.getGasConc());
-        tvO2.setText("Concentración de o2: "+medicion.getO2Conc());*/
-        tvUbi.setText("Ubicación: "+"123");
+        tvGas.setText("Concentración de Gas: "+medicion.getGas());
+        tvAcido.setText("Concentración de Ácido Sulfhídrico: "+medicion.getAcidoSulf());
+        tvAzufre.setText("Concentración de Dióxido de Azufre: "+medicion.getAzufre());
+        tvUbi.setText("Ubicación: "+medicion.getUbicacion());
     }
 
 
