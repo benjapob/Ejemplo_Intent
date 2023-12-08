@@ -121,7 +121,7 @@ public class Agregar extends AppCompatActivity {
                 sulf.setText("Acido Sulfhídrico: " + sulfMedida);
                 azufre.setText("Dióxido de Azufre: " + azMedida);
 
-                ubicacionMed = "77º 23º";
+                ubicacionMed = dispositivo.getLatitud().toString() + "º "+ dispositivo.getLongitud().toString()+"º";
                 ubicacion.setText("Ubicación: "+ubicacionMed);
 
             }
@@ -134,7 +134,7 @@ public class Agregar extends AppCompatActivity {
     }
 
     public void agregar(View view) {
-        Medicion m = MedicionController.addDispositivoMed(gasMedida, sulfMedida, ubicacionMed);
+        Medicion m = MedicionController.addDispositivoMed(gasMedida, sulfMedida, azMedida, ubicacionMed, idEmpresa);
         if (m != null){
             databaseReference.child("Medicion").child(String.valueOf(m.getIdMed())).setValue(m);
         }

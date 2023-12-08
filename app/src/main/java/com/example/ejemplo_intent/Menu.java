@@ -41,7 +41,7 @@ public class Menu extends AppCompatActivity {
         Intent intent = getIntent();
         idEmpresa = intent.getIntExtra("id", 0);
 
-        Dispositivo d = new Dispositivo(0, "","0.0","0.0","0.0","0.0","0.0", idEmpresa);
+        Dispositivo d = new Dispositivo(0, "","0.0","0.0","0.0","77.0","23.0", idEmpresa);
 
         if (d != null){
             databaseReference.child("Dispositivo").child(String.valueOf(d.getIdDispositivo())).setValue(d);

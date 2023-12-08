@@ -40,8 +40,8 @@ public class DetailMedicion extends AppCompatActivity {
         medicion = (Medicion)intent.getSerializableExtra("medicion");
 
         tvFecha.setText("Fecha de medición: "+medicion.getFechaMedicion());
-        tvGas.setText("Concentración de gas: "+medicion.getGasConc());
-        tvO2.setText("Concentración de o2: "+medicion.getO2Conc());
+        /*tvGas.setText("Concentración de gas: "+medicion.getGasConc());
+        tvO2.setText("Concentración de o2: "+medicion.getO2Conc());*/
         tvUbi.setText("Ubicación: "+"123");
     }
 

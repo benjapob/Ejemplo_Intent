@@ -8,17 +8,21 @@ import java.util.Locale;
 
 public class Medicion implements Serializable {
     private int idMed;
-    //usar la clase dispositivo en vez de atributos
-    private String gasConc;
-    private String o2Conc;
+    private String gas;
+    private String acidoSulf;
+    private String azufre;
+    private Integer idEmpresa;
+    private String ubicacion;
     private String fechaMedicion;
-    private Dispositivo dispositivo;
     private boolean activo;
 
-    public Medicion(int idMed, String gasConc, String o2Conc, String ubicacion) {
+    public Medicion(int idMed, String gas, String acidoSulf, String azufre, String ubicacion, Integer idEmpresa) {
         this.idMed = idMed;
-        this.gasConc = gasConc;
-        this.o2Conc = o2Conc;
+        this.gas = gas;
+        this.acidoSulf = acidoSulf;
+        this.azufre = azufre;
+        this.idEmpresa = idEmpresa;
+        this.ubicacion = ubicacion;
         this.activo = true;
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -26,7 +30,6 @@ public class Medicion implements Serializable {
         SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
         String hora = df2.format(c);
         this.fechaMedicion =  fecha + " " + hora;
-        //this.dispositivo = dispositivo;
     }
 
     public int getIdMed() {
@@ -37,20 +40,36 @@ public class Medicion implements Serializable {
         this.idMed = idMed;
     }
 
-    public String getGasConc() {
-        return gasConc;
+    public String getGas() {
+        return gas;
     }
 
-    public void setGasConc(String gasConc) {
-        this.gasConc = gasConc;
+    public void setGas(String gas) {
+        this.gas = gas;
     }
 
-    public String getO2Conc() {
-        return o2Conc;
+    public String getAcidoSulf() {
+        return acidoSulf;
     }
 
-    public void setO2Conc(String o2Conc) {
-        this.o2Conc = o2Conc;
+    public void setAcidoSulf(String acidoSulf) {
+        this.acidoSulf = acidoSulf;
+    }
+
+    public String getAzufre() {
+        return azufre;
+    }
+
+    public void setAzufre(String azufre) {
+        this.azufre = azufre;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getFechaMedicion() {
@@ -69,11 +88,11 @@ public class Medicion implements Serializable {
         this.activo = activo;
     }
 
-    public Dispositivo getDispositivo() {
-        return dispositivo;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setDispositivo(Dispositivo dispositivo) {
-        this.dispositivo = dispositivo;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 }
