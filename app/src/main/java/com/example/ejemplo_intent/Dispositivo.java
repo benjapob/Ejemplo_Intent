@@ -3,17 +3,17 @@ package com.example.ejemplo_intent;
 public class Dispositivo {
     Integer idDispositivo;
     String nombreDispositivo;
-    Double acidoSulf;
-    Double azufre;
-    Double gas;
-    Double latitud;
-    Double longitud;
+    String acidoSulf;
+    String azufre;
+    String gas;
+    String latitud;
+    String longitud;
     Integer idEmpresa;
 
     public Dispositivo() {
     }
 
-    public Dispositivo(Integer idDispositivo, String nombreDispositivo, Double acidoSulf, Double azufre, Double gas, Double latitud, Double longitud, Integer idEmpresa) {
+    public Dispositivo(Integer idDispositivo, String nombreDispositivo, String acidoSulf, String azufre, String gas, String latitud, String longitud, Integer idEmpresa) {
         this.idDispositivo = idDispositivo;
         this.nombreDispositivo = nombreDispositivo;
         this.acidoSulf = acidoSulf;
@@ -40,43 +40,43 @@ public class Dispositivo {
         this.nombreDispositivo = nombreDispositivo;
     }
 
-    public Double getAcidoSulf() {
+    public String getAcidoSulf() {
         return acidoSulf;
     }
 
-    public void setAcidoSulf(Double acidoSulf) {
+    public void setAcidoSulf(String acidoSulf) {
         this.acidoSulf = acidoSulf;
     }
 
-    public Double getAzufre() {
+    public String getAzufre() {
         return azufre;
     }
 
-    public void setAzufre(Double azufre) {
+    public void setAzufre(String azufre) {
         this.azufre = azufre;
     }
 
-    public Double getGas() {
+    public String getGas() {
         return gas;
     }
 
-    public void setGas(Double gas) {
+    public void setGas(String gas) {
         this.gas = gas;
     }
 
-    public Double getLatitud() {
+    public String getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(Double latitud) {
+    public void setLatitud(String latitud) {
         this.latitud = latitud;
     }
 
-    public Double getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Double longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 

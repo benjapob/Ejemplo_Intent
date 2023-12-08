@@ -111,9 +111,9 @@ public class Agregar extends AppCompatActivity {
 
                 }
 
-                Double gasNum = dispositivo.getGas();
-                Double sulfNum = dispositivo.getAcidoSulf();
-                Double azNum = dispositivo.getAzufre();
+                Double gasNum = Double.parseDouble(dispositivo.getGas());
+                Double sulfNum = Double.parseDouble(dispositivo.getAcidoSulf());
+                Double azNum = Double.parseDouble(dispositivo.getAzufre());
 
                 calc(gasNum, sulfNum, azNum);
 
