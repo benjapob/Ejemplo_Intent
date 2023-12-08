@@ -1,15 +1,20 @@
 package com.example.ejemplo_intent;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Menu extends AppCompatActivity {
     ImageView imgList;
@@ -19,6 +24,7 @@ public class Menu extends AppCompatActivity {
     Integer idEmpresa;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    Medicion medicion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +47,8 @@ public class Menu extends AppCompatActivity {
         Intent intent = getIntent();
         idEmpresa = intent.getIntExtra("id", 0);
 
+        getMediciones();
+
         Dispositivo d = new Dispositivo(0, "","0.0","0.0","0.0","77.0","23.0", idEmpresa);
 
         if (d != null){
@@ -54,6 +62,28 @@ public class Menu extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void getMediciones() {
+        databaseReference.child("Medicion").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                MedicionController.listaDispositivoMed.clear();
+                for (DataSnapshot item : snapshot.getChildren()){
+                    Medicion m = item.getValue(Medicion.class);
+                    if (MedicionController.findDispositivoMed(m.getIdMed()) == null && idEmpresa == m.getIdEmpresa()){
+                        MedicionController.listaDispositivoMed.add(m);
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void add(View view){

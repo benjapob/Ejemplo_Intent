@@ -3,7 +3,7 @@ package com.example.ejemplo_intent;
 import java.util.ArrayList;
 
 public class MedicionController {
-    private static ArrayList<Medicion> listaDispositivoMed = new ArrayList<>();
+    public static ArrayList<Medicion> listaDispositivoMed = new ArrayList<>();
 
     public static Medicion addDispositivoMed(String gas, String acidoSulf, String azufre, String ubicacion, Integer idEmpresa) {
         Medicion d = new Medicion(listaDispositivoMed.size()+1, gas, acidoSulf, azufre, ubicacion, idEmpresa);
@@ -33,15 +33,5 @@ public class MedicionController {
 
         }
         return listaMedicionesActive;
-    }
-
-    public static ArrayList<Medicion> cargarLista(int idDispositivo) {
-        /*if (listaDispositivoMed.size() == 0) {
-            addDispositivoMed( "50 (Media)", "20 (Baja)", "66");
-            addDispositivoMed( "80 (Alta)", "20 (Baja)", "77");
-            addDispositivoMed( "10 (Baja)", "50 (Media)", "77");
-        }*/
-        ArrayList<Medicion> listaMediciones = new ArrayList<>();
-        return listaMediciones;
     }
 }

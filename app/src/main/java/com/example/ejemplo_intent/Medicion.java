@@ -16,6 +16,10 @@ public class Medicion implements Serializable {
     private String fechaMedicion;
     private boolean activo;
 
+    public Medicion() {
+
+    }
+
     public Medicion(int idMed, String gas, String acidoSulf, String azufre, String ubicacion, Integer idEmpresa) {
         this.idMed = idMed;
         this.gas = gas;
