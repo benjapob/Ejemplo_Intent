@@ -7,16 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Menu extends AppCompatActivity {
     ImageView imgList;
     ImageView imgAdd;
     ImageView imgSettings;
     ImageView imgInfo;
     Integer idEmpresa;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        iniciarFireBase();
 
         imgList = findViewById(R.id.imgList);
         imgList.setImageResource(R.mipmap.list);
@@ -33,8 +41,19 @@ public class Menu extends AppCompatActivity {
         Intent intent = getIntent();
         idEmpresa = intent.getIntExtra("id", 0);
 
+        Dispositivo d = new Dispositivo(0, "",0.0,0.0,0.0,0.0,0.0, idEmpresa);
+
+        if (d != null){
+            databaseReference.child("Dispositivo").child(String.valueOf(d.getIdDispositivo())).setValue(d);
+        }
         /*Intent intent = getIntent();
         controllerMed = (MedicionController)intent.getSerializableExtra("controllerMed");*/
+    }
+
+    private void iniciarFireBase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
     }
 
     public void add(View view){

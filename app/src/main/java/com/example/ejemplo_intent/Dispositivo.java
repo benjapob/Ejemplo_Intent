@@ -3,21 +3,25 @@ package com.example.ejemplo_intent;
 public class Dispositivo {
     Integer idDispositivo;
     String nombreDispositivo;
-    Float acidoSulf;
-    Float azufre;
-    Float nox;
-    Float latitud;
-    Float longitud;
-    Empresa empresa;
+    Double acidoSulf;
+    Double azufre;
+    Double gas;
+    Double latitud;
+    Double longitud;
+    Integer idEmpresa;
 
-    public Dispositivo(Integer idDispositivo, String nombreDispositivo, Float gas, Float o2, Float latitud, Float longitud) {
+    public Dispositivo() {
+    }
+
+    public Dispositivo(Integer idDispositivo, String nombreDispositivo, Double acidoSulf, Double azufre, Double gas, Double latitud, Double longitud, Integer idEmpresa) {
         this.idDispositivo = idDispositivo;
         this.nombreDispositivo = nombreDispositivo;
         this.acidoSulf = acidoSulf;
         this.azufre = azufre;
-        this.nox = nox;
+        this.gas = gas;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.idEmpresa = idEmpresa;
     }
 
     public Integer getIdDispositivo() {
@@ -36,51 +40,51 @@ public class Dispositivo {
         this.nombreDispositivo = nombreDispositivo;
     }
 
-    public Float getAcidoSulf() {
+    public Double getAcidoSulf() {
         return acidoSulf;
     }
 
-    public void setAcidoSulf(Float acidoSulf) {
+    public void setAcidoSulf(Double acidoSulf) {
         this.acidoSulf = acidoSulf;
     }
 
-    public Float getAzufre() {
+    public Double getAzufre() {
         return azufre;
     }
 
-    public void setAzufre(Float azufre) {
+    public void setAzufre(Double azufre) {
         this.azufre = azufre;
     }
 
-    public Float getNox() {
-        return nox;
+    public Double getGas() {
+        return gas;
     }
 
-    public void setNox(Float nox) {
-        this.nox = nox;
+    public void setGas(Double gas) {
+        this.gas = gas;
     }
 
-    public Float getLatitud() {
+    public Double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(Float latitud) {
+    public void setLatitud(Double latitud) {
         this.latitud = latitud;
     }
 
-    public Float getLongitud() {
+    public Double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Float longitud) {
+    public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public Integer getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }
