@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DetailMedicion extends AppCompatActivity {
 
@@ -21,10 +24,14 @@ public class DetailMedicion extends AppCompatActivity {
     TextView tvAzufre;
     TextView tvUbi;
     Medicion medicion;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        iniciarFireBase();
 
         ImageView imgPersona = findViewById(R.id.img);
         imgPersona.setImageResource(R.mipmap.iot);
@@ -48,6 +55,12 @@ public class DetailMedicion extends AppCompatActivity {
         tvUbi.setText("Ubicación: "+medicion.getUbicacion());
     }
 
+    private void iniciarFireBase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
 
 
     public void back(View view) {
@@ -61,6 +74,8 @@ public class DetailMedicion extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         MedicionController.removeDispositivoMed(medicion.getIdMed());
+                        Medicion medicionAct = MedicionController.findDispositivoMed(medicion.getIdMed());
+                        databaseReference.child("Medicion").child(String.valueOf(medicion.getIdMed())).setValue(medicionAct);
                         Snackbar.make(tvFecha,"Dispositivo eliminado",Snackbar.LENGTH_SHORT)
                                 .setAction("Ok", new View.OnClickListener() {
                                     @Override
