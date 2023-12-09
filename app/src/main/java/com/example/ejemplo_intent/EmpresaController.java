@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EmpresaController {
-    private static ArrayList<Empresa> listaEmpresa = new ArrayList<>();
+    public static ArrayList<Empresa> listaEmpresa = new ArrayList<>();
 
-    public static void addEmpresa(String nombre, String rut, String contraseña, String email, String telefono) {
+    public static Empresa addEmpresa(String nombre, String rut, String contraseña, String email, String telefono) {
         Empresa e = new Empresa(listaEmpresa.size()+1, nombre, rut, contraseña, email, telefono);
         listaEmpresa.add(e);
+        return e;
     }
 
     public static Empresa findEmpresa(int id) {
@@ -37,8 +38,5 @@ public class EmpresaController {
 
     public static void cargarLista() {
 
-        if (listaEmpresa.size() == 0) {
-            addEmpresa("emp1","1-1","admin","correo@correo.com","123");
-        }
     }
 }

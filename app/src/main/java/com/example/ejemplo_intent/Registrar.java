@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Registrar extends AppCompatActivity {
 
@@ -22,11 +25,15 @@ public class Registrar extends AppCompatActivity {
     EditText nombre;
     EditText rut;
     EditText telefono;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
+
+        iniciarFireBase();
 
         logo = findViewById(R.id.img);
         logo.setImageResource(R.mipmap.logo);
@@ -36,6 +43,12 @@ public class Registrar extends AppCompatActivity {
         nombre = findViewById(R.id.etNombre);
         rut = findViewById(R.id.etRut);
         telefono = findViewById(R.id.etTelefono);
+    }
+
+    private void iniciarFireBase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
     }
 
     public void registerEmpresa(View view){
@@ -62,7 +75,10 @@ public class Registrar extends AppCompatActivity {
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            EmpresaController.addEmpresa(nombreInput, rutInput, passwordInput, correoInput, telefonoInput);
+                            Empresa e = EmpresaController.addEmpresa(nombreInput, rutInput, passwordInput, correoInput, telefonoInput);
+                            if (e != null){
+                                databaseReference.child("Empresa").child(String.valueOf(e.getIdEmpresa())).setValue(e);
+                            }
                             finish();
                         }
                     })

@@ -11,6 +11,10 @@ public class Empresa {
     private String email;
     private String telefono;
 
+    public Empresa(){
+
+    }
+
     public Empresa(Integer idEmpresa, String nombreEmpresa, String rutEmpresa, String contraseña, String email, String telefono) {
         this.idEmpresa = idEmpresa;
         this.nombreEmpresa = nombreEmpresa;
@@ -18,9 +22,6 @@ public class Empresa {
         this.contraseña = contraseña;
         this.email = email;
         this.telefono = telefono;
-        Random r = new Random();
-        /*this.dispositivo = new Dispositivo(idEmpresa, "Dispositivo"+idEmpresa.toString(), r.nextFloat(), r.nextFloat(), r.nextFloat(), r.nextFloat());
-        DispositivoController.addDispositivo(this.dispositivo);*/
     }
 
     public Integer getIdEmpresa() {

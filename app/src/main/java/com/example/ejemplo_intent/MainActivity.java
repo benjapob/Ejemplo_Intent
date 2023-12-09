@@ -1,5 +1,6 @@
 package com.example.ejemplo_intent;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -11,6 +12,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -20,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
     ImageView logo;
     EditText email;
     EditText contraseña;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        iniciarFireBase();
 
         logo = findViewById(R.id.img);
         logo.setImageResource(R.mipmap.logo);
@@ -31,8 +42,35 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.etUsuario);
         contraseña = findViewById(R.id.etPassword);
 
-        EmpresaController.cargarLista();
+        getEmpresas();
 
+    }
+
+    private void iniciarFireBase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void getEmpresas() {
+        databaseReference.child("Empresa").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                EmpresaController.listaEmpresa.clear();
+                for (DataSnapshot item : snapshot.getChildren()){
+                    Empresa e = item.getValue(Empresa.class);
+                    if (EmpresaController.findEmpresa(e.getIdEmpresa()) == null){
+                        EmpresaController.listaEmpresa.add(e);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void menu(View v){
