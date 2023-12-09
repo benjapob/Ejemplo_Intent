@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 
@@ -73,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void menu(View v){
+    public void menu(View v) throws NoSuchAlgorithmException{
         String emailInput = email.getText().toString();
-        String pwdInput = contraseña.getText().toString();
+        String pwdInput = Hash.hashPassword(contraseña.getText().toString());
         if (emailInput.isEmpty() || pwdInput.isEmpty()){
                 Snackbar.make(email,"Por favor, rellena los campos",Snackbar.LENGTH_SHORT)
                         .setAction("Ok", new View.OnClickListener() {

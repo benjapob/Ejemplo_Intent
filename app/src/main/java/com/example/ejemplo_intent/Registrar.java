@@ -16,6 +16,9 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Registrar extends AppCompatActivity {
 
     ImageView logo;
@@ -51,9 +54,9 @@ public class Registrar extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
-    public void registerEmpresa(View view){
+    public void registerEmpresa(View view) throws NoSuchAlgorithmException{
         String correoInput = correo.getText().toString();
-        String passwordInput = password.getText().toString();
+        String passwordInput = Hash.hashPassword( password.getText().toString() );
         String nombreInput = nombre.getText().toString();
         String rutInput = rut.getText().toString();
         String telefonoInput = telefono.getText().toString();
