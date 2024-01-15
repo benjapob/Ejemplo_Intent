@@ -15,6 +15,6 @@ Se puede crear un usuario o usar:
 * Firebase
   
 ## Screenshots : 
-<img src="preview/front1.png" height="400" width="800">
-<img src="preview/front2.png" height="400" width="800">
+<img src="preview/front1.png" height="800" width="400">
+<img src="preview/front2.png" height="800" width="400">
 
